@@ -1,0 +1,7 @@
+<div style="font-family:Arial,Helvetica,sans-serif;color:#222">
+  <h3>⚠️ Budget Alert</h3>
+  <p>Hello {{ user.name }},</p>
+  <p>Your total spending is <strong>₹{{ "%.2f"|format(total_spent) }}</strong>, which has exceeded your budget limit of <strong>₹{{ "%.2f"|format(budget_limit) }}</strong>.</p>
+  <p>Please check your Expense Tracker dashboard.</p>
+  <p>— Expense Tracker</p>
+</div>

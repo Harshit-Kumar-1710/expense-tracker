@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-5" style="max-width:900px;">
+    <div class="card p-4">
+      {% with messages = get_flashed_messages(with_categories=false) %}
+        {% for m in messages %}
+          <div class="alert alert-info">{{ m|safe }}</div>
+        {% endfor %}
+      {% endwith %}
+
+      <h2 class="mb-2">👋 Welcome, {{ user.name }}!</h2>
+      <p>Your current budget limit: <strong>₹{{ "%.2f"|format(user.budget_limit) }}</strong></p>
+
+      <div class="d-grid gap-2 mt-3">
+        <a href="{{ url_for('add_expense') }}" class="btn btn-success btn-lg">💸 Add Expense</a>
+        <a href="{{ url_for('categories') }}" class="btn btn-info btn-lg text-white">🏷️ Manage Categories</a>
+        <a href="{{ url_for('transactions') }}" class="btn btn-dark btn-lg">📄 View Transactions</a>
+        <a href="{{ url_for('email_report') }}" class="btn btn-primary btn-lg">📧 Email Monthly Report</a>
+        <a href="{{ url_for('email_report') }}?range=week" class="btn btn-outline-success btn-lg">📅 Email Weekly Report</a>
+        <a href="{{ url_for('budget') }}" class="btn btn-outline-primary btn-lg">💰 My Budget</a>
+        <a href="{{ url_for('profile') }}" class="btn btn-outline-secondary btn-lg">👤 Profile</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
